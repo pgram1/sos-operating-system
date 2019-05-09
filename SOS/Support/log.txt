@@ -1,0 +1,27 @@
+Simple Operating System with 128MBs of RAM. Process scheduler: First Come First Serve. Memory Manager: First Fit
+Name      AT    RT    TT
+
+A          0     0     39
+B          3     8     41
+C          5     20     73
+D          7     0     0
+E          52     0     18
+F          56     0     0
+G          68     3     37
+H          80     0     29
+I          83     12     46
+J          120     0     39
+K          135     0     34
+----------------------------
+Average Response Time = 3.909090909090909
+Average TurnArround Time = 32.36363636363637
+Context Switch Time (times CPU was empty) = 54
+Number of times processes blocked = 16
+Number of times processes ended = 9
+Number of the process schduler preemptively changed a process = 0
+
+Number of times the Memory manager compacted the memory = 2
+
+Average memory fragmentation = 13.874407
+
+Maximum memory fragmentation = 46.61017
