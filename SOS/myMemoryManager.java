@@ -2,6 +2,14 @@ import sossim.core.IMemoryManager;
 
 public class myMemoryManager implements IMemoryManager{
   public myMemoryManager(){
+    
+    private ArrayList<Partition> partitionTable;
+    private int lastMemorySlot;
+    
+    public void myMemoryManager(int size){
+		partitionTable = new ArrayList<Partition>();
+		
+    }
   
     public int addProcess(int size){
     return 1;
