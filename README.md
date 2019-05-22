@@ -2,6 +2,10 @@
 
 Coursework for Dimopoulos
 
+## Notes
+
+- Arraylist of partitions of memory
+
 ## Needed
 
 ![needed](CourseworkFiles/needed.png)
