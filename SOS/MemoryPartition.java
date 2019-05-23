@@ -1,39 +1,45 @@
 public class MemoryPartition {
-  private int bAddr;
-  private int sz;
-  private boolean freeSwitch;
+    private int bAddr;
+    private int sz;
+    private boolean freeSwitch;
 
-  public MemoryPartition(boolean free, int s) {
-      this.bAddr = 0;
-      this.sz = s;
-      this.freeSwitch = free;
-  }
+    public MemoryPartition(boolean free, int s) {
+        this.bAddr = 0;
+        this.sz = s;
+        this.freeSwitch = free;
+    }
 
-  public int getSize() {
-      return this.sz;
-  }
+    public MemoryPartition(int bA, int s) {
+        this.bAddr = bA;
+        this.sz = s;
+        this.freeSwitch = true;
+    }
 
-  public void setSize(int s) {
-      this.sz = s;
-  }
+    public int getSize() {
+        return this.sz;
+    }
 
-  public void setBaseAddress(int address) {
-      this.bAddr = address;
-  }
+    public void setSize(int s) {
+        this.sz = s;
+    }
 
-  public int getBaseAddress() {
-      return this.bAddr;
-  }
+    public void setBaseAddress(int address) {
+        this.bAddr = address;
+    }
 
-  public void release() {
-      this.freeSwitch = true;
-  }
+    public int getBaseAddress() {
+        return this.bAddr;
+    }
 
-  public void occupy() {
-      this.freeSwitch = false;
-  }
+    public void release() {
+        this.freeSwitch = true;
+    }
 
-  public boolean isFree() {
-      return this.freeSwitch;
-  }
+    public void occupy() {
+        this.freeSwitch = false;
+    }
+
+    public boolean isFree() {
+        return this.freeSwitch;
+    }
 }
