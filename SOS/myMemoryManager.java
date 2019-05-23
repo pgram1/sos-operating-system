@@ -3,7 +3,7 @@ import sossim.core.*;
 public class myMemoryManager implements IMemoryManager {
     public myMemoryManager() {
 
-        private ArrayList <MemoryPartition> ram;
+        private ArrayList < MemoryPartition > ram;
         private int ramSize;
 
         public void myMemoryManager(int size) {
@@ -76,6 +76,17 @@ public class myMemoryManager implements IMemoryManager {
 
         public String toString() {
             return "No";
+        }
+
+
+        private void deleteProcessAtIndex(int position) {
+            if (position >= 0) {
+                ((MemoryPartition) this.ram.get(position)).release();
+                coaless(position);
+                if (position > 0) {
+                    coaless(position - 1);
+                }
+            }
         }
 
     }
