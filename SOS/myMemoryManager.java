@@ -16,28 +16,20 @@ import java.util.ArrayList;
 
 public class myMemoryManager implements IMemoryManager {
 
-    private ArrayList <MemoryPartition> ram;
+    private ArrayList < MemoryPartition > ram;
     private int ramSize;
 
     public myMemoryManager(int size) {
         this.ramSize = size;
-        this.ram = new ArrayList<MemoryPartition>();
+        this.ram = new ArrayList < MemoryPartition > ();
         this.ram.add(new MemoryPartition(false, this.ramSize));
     }
 
+    //todo
     public int addProcess(int size) {
         int position = findAvailablePartition(size);
         if (position == -1) {
             return -1;
-        }
-        if (((MemoryPartition) this.ram.get(position)).getSize() > size) {
-            int pSize = ((MemoryPartition) this.ram.get(position)).getSize() - size;
-            int pBa = ((MemoryPartition) this.ram.get(position)).getBaseAddress() + size;
-            this.ram.add(position + 1, new MemoryPartition(pBa, pSize));
-            ((MemoryPartition) this.ram.get(position)).setSize(size);
-            ((MemoryPartition) this.ram.get(position)).occupy();
-        } else {
-            ((MemoryPartition) this.ram.get(position)).occupy();
         }
         return ((MemoryPartition) this.ram.get(position)).getBaseAddress();
     }
