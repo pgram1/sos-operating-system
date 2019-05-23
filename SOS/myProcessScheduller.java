@@ -2,9 +2,15 @@ import sossim.core.IProcessScheduler;
 
 public class myProcessScheduller implements IProcessScheduler{
   public myProcessScheduller(){
+    
+    private ArrayList<SOSProcess> processQueue;
+    
+    public void myProcessScheduller(){
+		  processQueue = new ArrayList<SOSProcess>();
+    }
   
     public void addProcess(SOSProcess p){
-    
+     processQueue.add(p);
     }
     
     public SOSProcess selectProcessToRun(){
