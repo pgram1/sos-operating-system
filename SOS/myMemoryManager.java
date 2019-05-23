@@ -38,7 +38,6 @@ public class myMemoryManager implements IMemoryManager {
     public void compact(SOS os) {
         for (int i = 0; i < this.ram.size() - 1; i++) {
             if (((MemoryPartition) this.ram.get(i)).isFree()) {
-
                 int ps1AOld = ((MemoryPartition) this.ram.get(i)).getBaseAddress();
                 int ps2AOld = ((MemoryPartition) this.ram.get(i + 1)).getBaseAddress();
                 int ps1SOld = ((MemoryPartition) this.ram.get(i)).getSize();
