@@ -2,6 +2,18 @@ import sossim.core.SOS;
 import sossim.core.IMemoryManager;
 import java.util.ArrayList;
 
+/*
+  ________
+< AAAAAAAA >
+  --------
+         \   ^__^ 
+          \  (oo)\_______
+             (__)\       )\/\
+                 ||----w |
+                 ||     ||
+    
+*/
+
 public class myMemoryManager implements IMemoryManager {
 
     private ArrayList <MemoryPartition> ram;
@@ -49,18 +61,22 @@ public class myMemoryManager implements IMemoryManager {
         }
     }
 
+    //done
     public int getNumberOfPartitionsInMemory() {
         return this.ram.size();
     }
 
+    //done
     public int getSizeOfPartitionInMemory(int i) {
         return ((MemoryPartition) this.ram.get(i)).getSize();
     }
 
+    //done
     public int getAddressOfPartitionInMemory(int i) {
         return ((MemoryPartition) this.ram.get(i)).getBaseAddress();
     }
 
+    //done
     public float calcFragmentation() {
         float free = 0.0;
         float freemax = 0.0;
@@ -74,6 +90,7 @@ public class myMemoryManager implements IMemoryManager {
         return hunnid * (free - freemax) / free;
     }
 
+    //why do this?!
     public String toString() {
         return "No";
     }
@@ -82,6 +99,7 @@ public class myMemoryManager implements IMemoryManager {
     private void deleteProcessAtIndex(int position) {
         if (position >= 0) {
             ((MemoryPartition) this.ram.get(position)).release();
+            // done
             coaless(position);
             if (position > 0) {
                 coaless(position - 1);
@@ -89,6 +107,8 @@ public class myMemoryManager implements IMemoryManager {
         }
     }
 
+
+    //done
     private void coaless(int posi) {
         if (posi < this.ram.size() - 1 && (
                 (MemoryPartition) this.ram.get(posi)).isFree() && ((MemoryPartition) this.ram.get(posi + 1)).isFree()) {
