@@ -30,8 +30,8 @@ public class myMemoryManager implements IMemoryManager {
         }
 
         public void deleteProcessAtAddress(int address) {
-            int pos = findPartitionIndex(address);
-            deleteProcessAtIndex(pos);
+            int index = findPartitionIndex(address);
+            deleteProcessAtIndex(index);
         }
 
         public void compact(SOS os) {
