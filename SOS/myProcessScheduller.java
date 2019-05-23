@@ -1,4 +1,4 @@
-import sossim.core.IProcessScheduler;
+import sossim.core.*;
 
 public class myProcessScheduller implements IProcessScheduler{
   public myProcessScheduller(){
@@ -22,7 +22,7 @@ public class myProcessScheduller implements IProcessScheduler{
     }
     
     public void removeProcess(SOSProcess p){
-    
+     processQueue.remove(p);
     }
     
     public String toString(){
