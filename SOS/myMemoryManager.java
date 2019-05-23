@@ -3,7 +3,7 @@ import sossim.core.*;
 public class myMemoryManager implements IMemoryManager {
     public myMemoryManager() {
 
-        private ArrayList < MemoryPartition > ram;
+        private ArrayList <MemoryPartition> ram;
         private int ramSize;
 
         public void myMemoryManager(int size) {
