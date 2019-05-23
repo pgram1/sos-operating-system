@@ -9,7 +9,7 @@ public class myMemoryManager implements IMemoryManager {
 
     public myMemoryManager(int size) {
         this.ramSize = size;
-        this.ram = new ArrayList();
+        this.ram = new ArrayList<MemoryPartition>();
         this.ram.add(new MemoryPartition(false, this.ramSize));
     }
 
