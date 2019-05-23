@@ -90,12 +90,12 @@ public class myMemoryManager implements IMemoryManager {
         }
     }
 
-    private void coaless(int position) {
-        if (position < this.ram.size() - 1 && (
-                (MemoryPartition) this.ram.get(position)).isFree() && ((MemoryPartition) this.ram.get(position + 1)).isFree()) {
-            int newSize = ((MemoryPartition) this.ram.get(position)).getSize() + ((MemoryPartition) this.ram.get(position + 1)).getSize();
-            ((MemoryPartition) this.ram.get(position)).setSize(newSize);
-            this.ram.remove(position + 1);
+    private void coaless(int posi) {
+        if (posi < this.ram.size() - 1 && (
+                (MemoryPartition) this.ram.get(posi)).isFree() && ((MemoryPartition) this.ram.get(posi + 1)).isFree()) {
+            int newSize = ((MemoryPartition) this.ram.get(posi)).getSize() + ((MemoryPartition) this.ram.get(posi + 1)).getSize();
+            ((MemoryPartition) this.ram.get(posi)).setSize(newSize);
+            this.ram.remove(posi + 1);
         }
     }
 
