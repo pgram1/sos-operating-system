@@ -3,10 +3,10 @@ public class MemoryPartition {
   private int sz;
   private boolean freeSwitch;
 
-  public MemoryPartition(int bA, int s) {
-      this.bAddr = bA;
+  public MemoryPartition(boolean free, int s) {
+      this.bAddr = 0;
       this.sz = s;
-      this.freeSwitch = true;
+      this.freeSwitch = free;
   }
 
   public int getSize() {
