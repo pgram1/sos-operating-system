@@ -10,7 +10,6 @@
 /_/ \___/_/    \__/_//_/\__/ /_/\___/\___/_/\_\/___/
 */
 
-
 public class MemoryPartition {
     private int bAddr;
     private int sz;
