@@ -39,6 +39,15 @@ public class myMemoryManager implements IMemoryManager {
         deleteProcessAtIndex(index);
     }
 
+    public int findPartitionIndex(int ad) {
+        for (int i = 0; i < this.ram.size(); i++) {
+            if (ad == ((MemoryPartition) this.ram.get(i)).getBaseAddress()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void compact(SOS os) {
         for (int i = 0; i < this.ram.size() - 1; i++) {
             if (((MemoryPartition) this.ram.get(i)).isFree()) {
