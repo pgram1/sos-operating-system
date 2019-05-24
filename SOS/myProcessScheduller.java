@@ -1,4 +1,5 @@
-import sossim.core.*;
+import sossim.core.SOSProcess;
+import sossim.core.IProcessScheduler;
 import java.util.ArrayList;
 
 

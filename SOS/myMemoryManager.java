@@ -1,4 +1,5 @@
-import sossim.core.*;
+import sossim.core.SOS;
+import sossim.core.IMemoryManager;
 import java.util.ArrayList;
 
 /*
