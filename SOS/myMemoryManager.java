@@ -53,6 +53,17 @@ public class myMemoryManager implements IMemoryManager {
         }
     }
 
+    private int addProcessAt(int size, int posi) {
+        if (((MemoryPartition) this.ram.get(posi)).getSize() > size) {
+            int ps2S = ((MemoryPartition) this.ram.get(posi)).getSize() - size;
+            int ps2BA = ((MemoryPartition) this.ram.get(posi)).getBaseAddress() + size;
+            this.ram.add(posi + 1, new MemoryPartition(ps2BA, ps2S));
+            ((MemoryPartition) this.ram.get(posi)).setSize(size);
+            ((MemoryPartition) this.ram.get(posi)).occupy();
+        }
+        return ((MemoryPartition) this.ram.get(posi)).getBaseAddress();
+    }
+
     //done
     public int getNumberOfPartitionsInMemory() {
         return this.ram.size();
