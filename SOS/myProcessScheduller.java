@@ -4,50 +4,47 @@ import java.util.ArrayList;
 
 
 public class myProcessScheduller implements IProcessScheduler {
+
+    private ArrayList < SOSProcess > queue;
+
     public myProcessScheduller() {
+        this.queue = new ArrayList < SOSProcess > ();
+    }
 
-        private ArrayList<SOSProcess> queue;
+    public void addProcess(SOSProcess p) {
+        this.queue.add(p);
+    }
 
-        public myProcessScheduller() {
-            this.queue = new ArrayList<SOSProcess>();
+    public SOSProcess selectProcessToRun() {
+        if (this.queue.isEmpty()) {
+            return null;
         }
-
-        public void addProcess(SOSProcess p) {
-            this.queue.add(p);
+        if (this.queue.size() == 1) {
+            return (SOSProcess) this.queue.get(0);
         }
+    }
 
-        public SOSProcess selectProcessToRun() {
-          if (this.queue.isEmpty()) {
-              return null;
-          }
-          if (this.queue.size() == 1) {
-              return (SOSProcess) this.queue.get(0);
-          }
-        }
+    public boolean preempt() {
+        return false;
+    }
 
-        public boolean preempt() {
-            return false;
-        }
+    public void removeProcess(SOSProcess p) {
+        this.queue.remove(p);
+    }
 
-        public void removeProcess(SOSProcess p) {
-            this.queue.remove(p);
-        }
+    public String toString() {
+        return "Fancypants";
+    }
 
-        public String toString() {
-            return "Fancypants";
-        }
+    public int getNumberOfProcessesInQueue() {
+        return this.queue.size();
+    }
 
-        public int getNumberOfProcessesInQueue() {
-            return this.queue.size();
-        }
+    public double getProgresssOfProcessInQueue(int i) {
+        return ((SOSProcess) this.queue.get(i)).getProgress();
+    }
 
-        public double getProgresssOfProcessInQueue(int i) {
-            return ((SOSProcess) this.queue.get(i)).getProgress();
-        }
-
-        public SOSProcess getProcessAtQueue(int i) {
-            return (SOSProcess) this.queue.get(i);
-        }
-
+    public SOSProcess getProcessAtQueue(int i) {
+        return (SOSProcess) this.queue.get(i);
     }
 }
