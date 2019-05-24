@@ -81,14 +81,14 @@ public class myMemoryManager implements IMemoryManager {
 
     //done
     public float calcFragmentation() {
-        float free = 0.0;
-        float freemax = 0.0;
-        float hunnid = 100.0;
+        float free = 0.0F;
+        float freemax = 0.0F;
+        float hunnid = 100.0F;
         for (int i = 0; i < this.ram.size(); i++) {
             if (((MemoryPartition) this.ram.get(i)).isFree()) {
                 free += ((MemoryPartition) this.ram.get(i)).getSize();
-                if (freemax < ((MemoryPartition) {
-                  this.ram.get(i)).getSize()) freemax = ((MemoryPartition) this.ram.get(i)).getSize();
+                if (freemax < ((MemoryPartition) this.ram.get(i)).getSize()) {
+                    freemax = ((MemoryPartition) this.ram.get(i)).getSize();
                 }
             }
         }
