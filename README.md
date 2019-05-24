@@ -2,11 +2,7 @@
 
 Coursework for Dimopoulos
 
-## Notes
-
-- `Partition.java` class for partition object
-- Arraylist of partitions of memory
-- Everything is in powerpoints
+## ~~Notes~~
 
 ## Needed
 
