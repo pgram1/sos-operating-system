@@ -17,7 +17,12 @@ public class myProcessScheduller implements IProcessScheduler {
         }
 
         public SOSProcess selectProcessToRun() {
-            return p;
+          if (this.queue.isEmpty()) {
+              return null;
+          }
+          if (this.queue.size() == 1) {
+              return (SOSProcess) this.queue.get(0);
+          }
         }
 
         public boolean preempt() {
