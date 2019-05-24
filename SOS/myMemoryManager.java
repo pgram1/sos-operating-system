@@ -16,12 +16,12 @@ import java.util.ArrayList;
 
 public class myMemoryManager implements IMemoryManager {
 
-    private ArrayList <MemoryPartition> ram;
+    private ArrayList<MemoryPartition> ram;
     private int ramSize;
 
     public myMemoryManager(int size) {
         this.ramSize = size;
-        this.ram = new ArrayList <MemoryPartition> ();
+        this.ram = new ArrayList<MemoryPartition>();
         this.ram.add(new MemoryPartition(false, this.ramSize));
     }
 
