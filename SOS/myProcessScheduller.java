@@ -22,6 +22,13 @@ public class myProcessScheduller implements IProcessScheduler {
         if (this.queue.size() == 1) {
             return (SOSProcess) this.queue.get(0);
         }
+        SOSProcess p = (SOSProcess)this.queue.get(0);
+        for (int i = 1; i < this.queue.size(); i++) {
+            if ((((SOSProcess)this.queue.get(i)).getCodeSize() - ((SOSProcess)this.queue.get(i)).getCounter())< (p.getCodeSize() - p.getCounter())) {
+            p = (SOSProcess)this.queue.get(i);
+            }
+        } 
+        return p;
     }
 
     public boolean preempt() {

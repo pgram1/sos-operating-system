@@ -27,7 +27,7 @@ public class myMemoryManager implements IMemoryManager {
 
     //todo
     public int addProcess(int size) {
-        int position = findAvailablePartition(size);
+        int position = 0;
         if (position == -1) {
             return -1;
         }

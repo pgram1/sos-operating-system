@@ -24,7 +24,7 @@ public class SOS extends PApplet {
     gui.defineProcessScheduller(new myProcessScheduller());
     
     //Add this to add your implementation of a memory manager:
-    gui.defineMemoryManager(new myMemoryManager(512));      
+    //gui.defineMemoryManager(new myMemoryManager(512));      
   }
 
   public void draw() {
