@@ -106,7 +106,7 @@ public class myMemoryManager implements IMemoryManager {
 
     //why do this?!
     public String toString() {
-        return "No";
+        return "NextFit";
     }
 
 

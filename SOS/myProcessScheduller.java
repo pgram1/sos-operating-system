@@ -33,7 +33,7 @@ public class myProcessScheduller implements IProcessScheduler {
     }
 
     public String toString() {
-        return "Fancypants";
+        return "Shortest Remaining Time Next";
     }
 
     public int getNumberOfProcessesInQueue() {
