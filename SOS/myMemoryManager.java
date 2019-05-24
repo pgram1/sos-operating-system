@@ -76,7 +76,9 @@ public class myMemoryManager implements IMemoryManager {
         for (int i = 0; i < this.ram.size(); i++) {
             if (((MemoryPartition) this.ram.get(i)).isFree()) {
                 free += ((MemoryPartition) this.ram.get(i)).getSize();
-                if (freemax < ((MemoryPartition) this.ram.get(i)).getSize()) freemax = ((MemoryPartition) this.ram.get(i)).getSize();
+                if (freemax < ((MemoryPartition) {
+                  this.ram.get(i)).getSize()) freemax = ((MemoryPartition) this.ram.get(i)).getSize();
+                }
             }
         }
         return hunnid * (free - freemax) / free;
