@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class myProcessScheduller implements IProcessScheduler {
 
-    private ArrayList < SOSProcess > queue;
+    private ArrayList<SOSProcess> queue;
 
     public myProcessScheduller() {
-        this.queue = new ArrayList < SOSProcess > ();
+        this.queue = new ArrayList<SOSProcess>();
     }
 
     public void addProcess(SOSProcess p) {
