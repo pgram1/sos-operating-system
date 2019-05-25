@@ -42,7 +42,7 @@ public class myProcessScheduller implements IProcessScheduler {
     }
 
     public boolean preempt() {
-        return false;
+        return true;
     }
 
     public void removeProcess(SOSProcess p) {
