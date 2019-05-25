@@ -14,6 +14,7 @@ During the semester, we got the chance to familiarize ourselves with many differ
 
 
 My choice of algorithms was the Next Fit algorithm for a memory manager and the Shortest Remaining Time as a process scheduler. I figured that since Next Fit is a variation of First Fit, which was already included in the simulator, I could actually extract some useful information about the effects of their main difference: Where they begin the search for empty space. First Fit is designed so that it begins searching from the beginning of the ram till the end every time [b], while Next Fit continues from the last place it found a position to place a process [c], virtually moving the starting point of the search all around the ram. This could theoretically lead to more suitable free partitions of adequate size being discovered, as the algorithm only searches ahead of where it previously worked, while the previous space is almost for sure unchanged or about to change.
+
 My choice for a process scheduler was more of intuitive than “well-thought”. I wanted to observe the effect of picking the smallest amount of work left to be executed first, a well established tactic in network related procedures, in action [d]. Since the implementation of this algorithm is based around this concept, it also meant that it could be fairly easy to implement, as estimating the time a process might need to run, not taking the random factor of process blocking into consideration, is a straightforward method of scheduling processes when we assume that our computer runs one simple instruction per tick at all times. The very way the simulator works would make the process a lot easier for that matter.
 
 
@@ -21,10 +22,12 @@ My choice for a process scheduler was more of intuitive than “well-thought”.
 
 
 The data structure chosen for the implementation of all my algorithms was that of an ArrayList. This is the resizable array version of a List data structure. I made this choice because it is an easy built-in structure for managing custom objects (the ones that were implemented in the library) as well as its performance benefits due to the fact it is implemented with arrays [a].
+
 The rest of the procedure up to the point of implementing the algorithms themselves was all about following the interface in implementing the methods. This was a straightforward procedure as it was basic object handling for the most part without a real challenge. That part also helped me revise the theory we have done in class, as how many of the functions work is taken out straight from the theory itself.
+
 When I reached the main algorithm implementation state, I made sure I got done with the process scheduler first, as it was inarguably the least challenging of the two. The assumption I made while implementing that algorithm is that the shortest remaining time can actually be calculated by subtracting the current counter of a process from its total length. While the libraries provided us with a percentage-completed-related method, my estimations were that this would not be the best way to go about finding the remaining time of the execution of a process, as a percentage does not take into account the amount of instructions left but how many they are in comparison to the size of the process. This could mean that a big process that had progressed further into its instructions could actually take longer time to finish than a smaller process with less instructions ahead. Another thing that should also be taken into consideration is that, since we are talking about a percentage, we are also talking about a division inevitably, which is an operation with more overhead than a simple addition (subtraction in this case) for a computer, therefore a subtraction-only algorithm could potentially be a lot faster as the operations increased (meaning the number of processes needed to be checked). My algorithm was basically that of picking the first process and then traversing through all the processes, each time checking if the process at hand has a smaller remaining time than the process in the “minimum” slot. If it indeed did, it would be put in the minimum slot. This leaves us with the process with the minimum remaining time in the minimum slot, which is then passed as the process of choice. As highlighted in comments in my source code, there is room for future work and improvement: we could keep the shortest remaining time processes sorted in a queue, so we don't have the overhead of looking over all the processes again but rather updating the sorting based on what processes actually got executed. This would of course waste a bit of ram to keep the extra queue data structure for our JVM simulator. Since the worst case scenario is the fact of randomness of when the processes wish to block, which is part of their codesize to begin with, the queue-based solution explored here could prove more effective. Tracking how many times the processes want to block is also a possible alternative, but that would generate far higher processing overhead as well as resource hogging, that would be pointless in environments with too few processes. Last important note, the way I handled preemption was an attempt to waste less CPU ticks when only one process is left at the process table. Preemption is enabled when more than one processes are in the process table while it’s disabled when only one is there.
 
-
+```java
 private boolean preemptFlag;
 
 
@@ -52,7 +55,7 @@ private boolean preemptFlag;
     public boolean preempt() {
         return preemptFlag;
     }
-
+```
 
 	
 
@@ -63,7 +66,9 @@ As for the memory management, my implementation of Next Fit started by re-implem
 
 
 The testing that took place to figure out the differences between the algorithms started off as trying to be as diverse in covering them as possible. I get two possible ram size configurations, 512 and 1024 megabytes, and then replicated them across all possible combinations of algorithms. First tests were those of the built-in first come first served process scheduler along the First Fit memory manager, just to get a basic idea of what the defaults actually looked like in both ram sizes. Then I switched the memory manager to Next Fit. At smaller ram sizes, the performance of Next Fit was not the one anticipated, because it turned out to have more fragmentation than First Fit as well as higher times, seemingly making the system perform worse. But as the size of ram increased, First Fit quickly came leveled with Next Fit in terms of process management times and actually surpassed it in terms of fragmentation.
+
 Moving on to my implementation of the shortest remaining time algorithm, in the smaller ram module the First Fit algorithm, although reporting back the same management times with Next Fit, needed to compact once and had higher average fragmentation rates. As we switched to the larger ram module though, First Fit actually beat Next Fit with lower fragmentation rates and the same management times.
+
 While the results that came out where interesting they certainly were perplexing as well. While there were no clear observations about the memory managers, which might be the case because Next Fit is just a modification of First Fit and the processes were not that diverse, there was clear evidence that the process scheduler I developed was a lot faster than the first come first served one in every scenario.
 
 
