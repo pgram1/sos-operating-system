@@ -6,9 +6,11 @@ import java.util.ArrayList;
 public class myProcessScheduller implements IProcessScheduler {
 
     private ArrayList<SOSProcess> queue;
+    private boolean preemptFlag;
 
     public myProcessScheduller() {
         this.queue = new ArrayList<SOSProcess>();
+        this.preemptFlag = false;
     }
 
     public void addProcess(SOSProcess p) {
@@ -19,9 +21,11 @@ public class myProcessScheduller implements IProcessScheduler {
         if (this.queue.isEmpty()) {
             return null;
         }
-        if (this.queue.size() == 1) {
+        else if (this.queue.size() == 1) {
+            this.preemptFlag = false;
             return (SOSProcess) this.queue.get(0);
         }
+        else{
         SOSProcess p = (SOSProcess)this.queue.get(0);
         for (int i = 1; i < this.queue.size(); i++) {
             /*
@@ -38,11 +42,13 @@ public class myProcessScheduller implements IProcessScheduler {
             p = (SOSProcess)this.queue.get(i);
             }
         } 
+        this.preemptFlag = true;
         return p;
+        }
     }
 
     public boolean preempt() {
-        return true;
+        return preemptFlag;
     }
 
     public void removeProcess(SOSProcess p) {
