@@ -18,13 +18,13 @@ public class SOS extends PApplet {
     gui = new SOSGUI(this); 
     
     //Add this to define manually whatever memory size you want:
-    gui.defineRAMSize(512);
+    //gui.defineRAMSize(512);
     
     //Add this to add your implementation of a process scheduller:
-    gui.defineProcessScheduller(new myProcessScheduller());
+    //gui.defineProcessScheduller(new myProcessScheduller());
     
     //Add this to add your implementation of a memory manager:
-    gui.defineMemoryManager(new myMemoryManager(512));      
+    //gui.defineMemoryManager(new myMemoryManager(512));      
   }
 
   public void draw() {
