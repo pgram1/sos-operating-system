@@ -83,6 +83,9 @@ ________________
 
 
 [a] Docs.oracle.com. (2019). ArrayList (Java Platform SE 8 ). [online] Available at: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html [Accessed 18 May 2019].
+
 [b] GeeksforGeeks. (2019). Program for First Fit algorithm in Memory Management - GeeksforGeeks. [online] Available at: https://www.geeksforgeeks.org/program-first-fit-algorithm-memory-management/ [Accessed 19 May 2019].
+
 [c] GeeksforGeeks. (2019). Operating System | Program for Next Fit algorithm in Memory Management - GeeksforGeeks. [online] Available at: https://www.geeksforgeeks.org/program-next-fit-algorithm-memory-management/ [Accessed 21 May 2019].
+
 [d] M. Harchol-Balter, B. Schroeder, N. Bansal, and M. Agrawal, ‘Size-based scheduling to improve web performance’, ACM Transactions on Computer Systems, vol. 21, no. 2, pp. 207–233, May 2003 [Online]. Available: http://dx.doi.org/10.1145/762483.762486
