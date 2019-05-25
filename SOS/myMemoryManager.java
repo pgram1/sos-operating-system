@@ -29,7 +29,7 @@ public class myMemoryManager implements IMemoryManager {
         this.lastPos = 0;
     }
 
-    //fix
+    //fixed
     public int addProcess(int size) {
         findPart(size, this.lastPos);
         if (this.lastPos == -1) {
@@ -50,6 +50,7 @@ public class myMemoryManager implements IMemoryManager {
         return ((MemoryPartition) this.ram.get(this.lastPos)).getBaseAddress();
     }
 
+    //done
     public int findPart(int size, int lastpos) {
         for (int i = lastpos; i < this.ram.size(); i++) {
             MemoryPartition p = (MemoryPartition) this.ram.get(i);
@@ -58,14 +59,18 @@ public class myMemoryManager implements IMemoryManager {
                 return i;
             }
         }
+        //go all the way around
+        this.lastPos = 0;
         return -1;
     }
 
+    //done
     public void deleteProcessAtAddress(int address) {
         int index = findPartitionIndex(address);
         deleteProcessAtIndex(index);
     }
 
+    //done
     public int findPartitionIndex(int ad) {
         for (int i = 0; i < this.ram.size(); i++) {
             if (ad == ((MemoryPartition) this.ram.get(i)).getBaseAddress()) {
@@ -75,6 +80,7 @@ public class myMemoryManager implements IMemoryManager {
         return -1;
     }
 
+    //done
     public void compact(SOS os) {
         for (int i = 0; i < this.ram.size() - 1; i++) {
             if (((MemoryPartition) this.ram.get(i)).isFree()) {
@@ -89,6 +95,7 @@ public class myMemoryManager implements IMemoryManager {
         }
     }
 
+    //done
     private int addProcessAt(int size, int posi) {
         if (((MemoryPartition) this.ram.get(posi)).getSize() > size) {
             int ps2S = ((MemoryPartition) this.ram.get(posi)).getSize() - size;
@@ -131,12 +138,13 @@ public class myMemoryManager implements IMemoryManager {
         return hunnid * (free - freemax) / free;
     }
 
-    //why do this?!
+    //:)
     public String toString() {
         return "NextFit";
     }
 
 
+    //done
     private void deleteProcessAtIndex(int position) {
         if (position >= 0) {
             ((MemoryPartition) this.ram.get(position)).release();
@@ -158,5 +166,4 @@ public class myMemoryManager implements IMemoryManager {
             this.ram.remove(posi + 1);
         }
     }
-
 }
