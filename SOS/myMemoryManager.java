@@ -16,14 +16,14 @@ import java.util.ArrayList;
 
 public class myMemoryManager implements IMemoryManager {
 
-    private ArrayList < MemoryPartition > ram;
+    private ArrayList<MemoryPartition> ram;
     private int ramSize;
     private boolean firstTime;
     private int lastPos;
 
     public myMemoryManager(int size) {
         this.ramSize = size;
-        this.ram = new ArrayList < MemoryPartition > ();
+        this.ram = new ArrayList<MemoryPartition>();
         this.ram.add(new MemoryPartition(false, this.ramSize));
         this.firstTime = true;
         this.lastPos = 0;
@@ -117,9 +117,9 @@ public class myMemoryManager implements IMemoryManager {
 
     //done
     public float calcFragmentation() {
-        float free = 0.0 F;
-        float freemax = 0.0 F;
-        float hunnid = 100.0 F;
+        float free = 0.0F;
+        float freemax = 0.0F;
+        float hunnid = 100.0F;
         for (int i = 0; i < this.ram.size(); i++) {
             if (((MemoryPartition) this.ram.get(i)).isFree()) {
                 free += ((MemoryPartition) this.ram.get(i)).getSize();
