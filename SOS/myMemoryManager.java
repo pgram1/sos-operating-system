@@ -16,22 +16,49 @@ import java.util.ArrayList;
 
 public class myMemoryManager implements IMemoryManager {
 
-    private ArrayList<MemoryPartition> ram;
+    private ArrayList < MemoryPartition > ram;
     private int ramSize;
+    private boolean firstTime;
+    private int lastPos;
 
     public myMemoryManager(int size) {
         this.ramSize = size;
-        this.ram = new ArrayList<MemoryPartition>();
+        this.ram = new ArrayList < MemoryPartition > ();
         this.ram.add(new MemoryPartition(false, this.ramSize));
+        this.firstTime = true;
+        this.lastPos = 0;
     }
 
-    //todo
+    //fix
     public int addProcess(int size) {
-        int position = 0;
-        if (position == -1) {
+        findPart(size, this.lastPos);
+        if (this.lastPos == -1) {
             return -1;
         }
-        return ((MemoryPartition) this.ram.get(position)).getBaseAddress();
+
+        if (((MemoryPartition) this.ram.get(this.lastPos)).getSize() > size) {
+            int p2size = ((MemoryPartition) this.ram.get(this.lastPos)).getSize() - size;
+            int p2bA = ((MemoryPartition) this.ram.get(this.lastPos)).getBaseAddress() + size;
+            this.ram.add(this.lastPos + 1, new MemoryPartition(p2bA, p2size));
+            ((MemoryPartition) this.ram.get(this.lastPos)).setSize(size);
+            ((MemoryPartition) this.ram.get(this.lastPos)).occupy();
+        } else {
+            ((MemoryPartition) this.ram.get(this.lastPos)).occupy();
+        }
+
+
+        return ((MemoryPartition) this.ram.get(this.lastPos)).getBaseAddress();
+    }
+
+    public int findPart(int size, int lastpos) {
+        for (int i = lastpos; i < this.ram.size(); i++) {
+            MemoryPartition p = (MemoryPartition) this.ram.get(i);
+            if (p.isFree() && p.getSize() >= size) {
+                this.lastPos = p.getBaseAddress();
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void deleteProcessAtAddress(int address) {
@@ -90,9 +117,9 @@ public class myMemoryManager implements IMemoryManager {
 
     //done
     public float calcFragmentation() {
-        float free = 0.0F;
-        float freemax = 0.0F;
-        float hunnid = 100.0F;
+        float free = 0.0 F;
+        float freemax = 0.0 F;
+        float hunnid = 100.0 F;
         for (int i = 0; i < this.ram.size(); i++) {
             if (((MemoryPartition) this.ram.get(i)).isFree()) {
                 free += ((MemoryPartition) this.ram.get(i)).getSize();
