@@ -37,9 +37,9 @@ public class myMemoryManager implements IMemoryManager {
         }
 
         if (((MemoryPartition) this.ram.get(this.lastPos)).getSize() > size) {
-            int p2size = ((MemoryPartition) this.ram.get(this.lastPos)).getSize() - size;
-            int p2bA = ((MemoryPartition) this.ram.get(this.lastPos)).getBaseAddress() + size;
-            this.ram.add(this.lastPos + 1, new MemoryPartition(p2bA, p2size));
+            int ps2SZ = ((MemoryPartition) this.ram.get(this.lastPos)).getSize() - size;
+            int ps2BA = ((MemoryPartition) this.ram.get(this.lastPos)).getBaseAddress() + size;
+            this.ram.add(this.lastPos + 1, new MemoryPartition(ps2BA, ps2SZ));
             ((MemoryPartition) this.ram.get(this.lastPos)).setSize(size);
             ((MemoryPartition) this.ram.get(this.lastPos)).occupy();
         } else {
@@ -54,7 +54,7 @@ public class myMemoryManager implements IMemoryManager {
         for (int i = lastpos; i < this.ram.size(); i++) {
             MemoryPartition p = (MemoryPartition) this.ram.get(i);
             if (p.isFree() && p.getSize() >= size) {
-                this.lastPos = p.getBaseAddress();
+                this.lastPos = i;
                 return i;
             }
         }
