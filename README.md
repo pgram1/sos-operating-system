@@ -1,6 +1,6 @@
 # sos-operating-system
 
-Coursework for Dimopoulos
+Coursework for Operating Systems
 
 ## ~~Notes~~
 
